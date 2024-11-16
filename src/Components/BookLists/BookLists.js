@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import "./BookLists.scss";
 const BookLists = () => {
   const [bookLists, setBookLists] = useState([]);
   const [hasLoaded, setHasLoaded] = useState(false);
