@@ -1,4 +1,5 @@
+import BookLists from "../../Components/BookLists/BookLists";
 const LandingPage = () => {
-  return <h1> this is landing page</h1>;
+  return <BookLists />;
 };
 export default LandingPage;
