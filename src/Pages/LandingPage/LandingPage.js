@@ -32,7 +32,7 @@ const LandingPage = () => {
           bookLists={bookLists}
           setBookLists={setBookLists}
         />
-        {/* <BookLists bookLists={bookLists} hasLoaded={hasLoaded} /> */}
+        <BookLists bookLists={bookLists} hasLoaded={hasLoaded} />
       </div>
     );
   }
