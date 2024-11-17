@@ -5,14 +5,21 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import "./BookListsSelectOptions.scss";
 const BookListsSelectOptions = (props) => {
+  const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [genre, setGenre] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [isbn, setIsbn] = useState("");
+  const [titleLists, setTitleLists] = useState([]);
   const [authorLists, setAuthorLists] = useState([]);
   const [genreLists, setGenreLists] = useState([]);
   const [isbnLists, setIsbnLists] = useState([]);
+
+  // DATA INITIALIZATIONS
   useEffect(() => {
+    const titles = props.bookLists.map((element) => {
+      return element.title;
+    });
     const authors = props.bookLists.map((element) => {
       return element.author;
     });
@@ -25,11 +32,13 @@ const BookListsSelectOptions = (props) => {
     const isbnsSorted = isbns.sort((element1, element2) => {
       return Number(element1) - Number(element2);
     });
-
+    setTitleLists(titles);
     setAuthorLists(authors);
     setGenreLists(genres);
     setIsbnLists(isbnsSorted);
   }, []);
+
+  // FILTER BOOKS
   const handleSearch = (keyName, keyValue) => {
     axios
       .get(" http://localhost:8080/filterInventories", {
@@ -47,7 +56,13 @@ const BookListsSelectOptions = (props) => {
         console.log(err);
       });
   };
+
+  // HANDLE INPUTS VALUES AND INVOKE SEARCH HANDLER
   const handleOptionChange = (event) => {
+    if (event.target.id === "title") {
+      setTitle(event.target.value);
+      handleSearch(event.target.id, event.target.value);
+    }
     if (event.target.id === "author") {
       setAuthor(event.target.value);
       handleSearch(event.target.id, event.target.value);
@@ -63,7 +78,28 @@ const BookListsSelectOptions = (props) => {
   };
   return (
     <div className="option-container">
-      <h2>title</h2>
+      {/* TITLE HEADERS */}
+      <select
+        id="title"
+        className="search-filter__options"
+        value={title}
+        onChange={(event) => {
+          handleOptionChange(event);
+        }}
+      >
+        <option className="search-filter__options--item" value="" disabled>
+          title
+        </option>
+        {titleLists.map((element, index) => (
+          <option
+            className="search-filter__options--item"
+            key={index}
+            value={element}
+          >
+            {element}
+          </option>
+        ))}
+      </select>
       {/* AUTHOR HEADER */}
       <select
         id="author"
@@ -112,7 +148,12 @@ const BookListsSelectOptions = (props) => {
       <div>
         <DatePicker
           selected={startDate}
-          onChange={(date) => setStartDate(date)}
+          onChange={(date) => {
+            setStartDate(date);
+          }}
+          onSelect={(date) => {
+            handleSearch("publication_date", date);
+          }}
         />
       </div>
       {/* ISBN HEADER */}
