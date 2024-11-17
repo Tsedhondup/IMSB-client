@@ -6,30 +6,47 @@ const BookLists = (props) => {
         <div className="tablet-book-lists">
           <div className="book-lists__body">
             {props.bookLists.map((element) => {
-              return <p key={element.entry_id}>{element.title}</p>;
+              return (
+                <p key={element.entry_id} className="tablet-book-lists__child">
+                  {element.title}
+                </p>
+              );
             })}
           </div>
           <div className="book-lists__body">
             {props.bookLists.map((element) => {
-              return <p key={element.entry_id}>{element.author}</p>;
+              return (
+                <p key={element.entry_id} className="tablet-book-lists__child">
+                  {element.author}
+                </p>
+              );
             })}
           </div>
           <div className="book-lists__body">
             {props.bookLists.map((element) => {
-              <div>
-                <h2>genre</h2>
-              </div>;
-              return <p key={element.entry_id}>{element.genre}</p>;
+              return (
+                <p key={element.entry_id} className="tablet-book-lists__child">
+                  {element.genre}
+                </p>
+              );
             })}
           </div>
           <div className="book-lists__body">
             {props.bookLists.map((element) => {
-              return <p key={element.entry_id}>{element.publication_date}</p>;
+              return (
+                <p key={element.entry_id} className="tablet-book-lists__child">
+                  {element.publication_date}
+                </p>
+              );
             })}
           </div>
           <div className="book-lists__body">
             {props.bookLists.map((element) => {
-              return <p key={element.entry_id}>{element.isbn}</p>;
+              return (
+                <p key={element.entry_id} className="tablet-book-lists__child">
+                  {element.isbn}
+                </p>
+              );
             })}
           </div>
         </div>

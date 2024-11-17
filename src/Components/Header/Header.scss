@@ -1,16 +1,25 @@
 @import "../../styles/partials/mixin";
 @import "../../styles/partials/variables";
-.header {
+
+.header-wrapper {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  border: 1px solid $pewter;
   padding: 16px;
   margin-bottom: 16px;
-  border: 1px solid $pewter;
   @include tablet {
     padding: 16px 32px;
     margin-bottom: 32px;
+  }
+}
+.header {
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include desktop {
+    max-width: 900px;
+    margin: auto;
   }
   &__site-name {
     color: #264de4;
@@ -18,8 +27,14 @@
     font-weight: normal;
   }
   &__add-book-form-link {
-    font-size: 13px;
-    text-transform: uppercase;
     text-align: right;
+    &--button {
+      font-size: 13px;
+      text-transform: uppercase;
+      text-align: right;
+      background-color: #264de4;
+      color: #ffffff;
+      padding: 8px;
+    }
   }
 }

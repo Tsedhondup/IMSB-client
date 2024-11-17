@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Headers from "../../Components/Header/Header";
 import BookLists from "../../Components/BookLists/BookLists";
 import SearchForm from "../../Components/SearchForm/SearchForm";
 import BookListsSelectOptions from "../../Components/BookListsHeaderButtons/BookListsSelectOptions";
 import ExportButtons from "../../Components/ExportButtons/ExportButtons";
+import "./LandingPage.scss";
 const LandingPage = () => {
   const [bookLists, setBookLists] = useState([]);
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -24,8 +24,7 @@ const LandingPage = () => {
 
   if (hasLoaded) {
     return (
-      <div>
-        <Headers />
+      <div className="landing-page">
         <ExportButtons bookLists={bookLists} />
         <SearchForm setBookLists={setBookLists} />
         <BookListsSelectOptions

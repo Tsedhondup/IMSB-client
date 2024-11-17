@@ -18,9 +18,13 @@
     outline-width: 0px;
     offset: 0px;
     border: 1px solid $gray;
+    background-color: #264de4;
+    color: #ffffff;
 
     &--item {
       border-width: 0px;
+      background-color: #ffffff;
+      color: #000000;
     }
   }
 

@@ -42,6 +42,9 @@
   @include tablet {
     display: flex;
   }
+  &__child {
+    line-height: 1.5em;
+  }
 }
 .mobile-book-lists {
   @include tablet {
