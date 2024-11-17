@@ -1,82 +1,115 @@
+import { useEffect, useState } from "react";
 import "./BookListsSelectOptions.scss";
-const BookListsSelectOptions = () => {
-  const fitlerConditons = [
-    "title",
-    "author",
-    "genre",
-    "publication date",
-    "ISBN",
-  ];
+const BookListsSelectOptions = (props) => {
+  const [author, setAuthor] = useState("");
+  const [genre, setGenre] = useState("");
+  const [pubDate, setPubDate] = useState("");
+  const [isbn, setIsbn] = useState("");
+  const [authorLists, setAuthorLists] = useState([]);
+  const [genreLists, setGenreLists] = useState([]);
+  const [pubDateLists, setPubDateLists] = useState([]);
+  const [isbnLists, setIsbnLists] = useState([]);
+  useEffect(() => {
+    const authors = props.bookLists.map((element) => {
+      return element.author;
+    });
+    const genres = props.bookLists.map((element) => {
+      return element.genre;
+    });
+    const publicationDates = props.bookLists.map((element) => {
+      return element.publication_date;
+    });
 
+    const isbns = props.bookLists.map((element) => element.isbn);
+    // SORTING ISBN IN ASCENDING ORDER
+    const isbnsSorted = isbns.sort((element1, element2) => {
+      return Number(element1) - Number(element2);
+    });
+
+    setAuthorLists(authors);
+    setGenreLists(genres);
+    setPubDateLists(publicationDates);
+    setIsbnLists(isbnsSorted);
+    console.log(isbnsSorted);
+  }, []);
+
+  const handleOptionChange = (event) => {};
   return (
     <div className="option-container">
-      <select className="search-filter__options">
+      <h2>title</h2>
+      {/* AUTHOR HEADER */}
+      <select
+        className="search-filter__options"
+        value={author}
+        onChange={handleOptionChange}
+      >
         <option className="search-filter__options--item" value="" disabled>
-          search by
+          author
         </option>
-        {fitlerConditons.map((option, index) => (
+        {authorLists.map((element, index) => (
           <option
             className="search-filter__options--item"
             key={index}
-            value={option.toLowerCase()}
+            value={element}
           >
-            {option}
+            {element}
           </option>
         ))}
       </select>
-      <select className="search-filter__options">
+      {/* GENRE HEADER */}
+      <select
+        className="search-filter__options"
+        value={genre}
+        onChange={handleOptionChange}
+      >
         <option className="search-filter__options--item" value="" disabled>
-          search by
+          genre
         </option>
-        {fitlerConditons.map((option, index) => (
+        {genreLists.map((element, index) => (
           <option
             className="search-filter__options--item"
             key={index}
-            value={option.toLowerCase()}
+            value={element}
           >
-            {option}
+            {element}
           </option>
         ))}
       </select>{" "}
-      <select className="search-filter__options">
+      {/* DATE HEADER */}
+      <select
+        className="search-filter__options"
+        value={pubDate}
+        onChange={handleOptionChange}
+      >
         <option className="search-filter__options--item" value="" disabled>
-          search by
+          publication date
         </option>
-        {fitlerConditons.map((option, index) => (
+        {pubDateLists.map((element, index) => (
           <option
             className="search-filter__options--item"
             key={index}
-            value={option.toLowerCase()}
+            value={element}
           >
-            {option}
+            {element}
           </option>
         ))}
-      </select>{" "}
-      <select className="search-filter__options">
+      </select>
+      {/* ISBN HEADER */}
+      <select
+        className="search-filter__options"
+        value={isbn}
+        onChange={handleOptionChange}
+      >
         <option className="search-filter__options--item" value="" disabled>
-          search by
+          isbn
         </option>
-        {fitlerConditons.map((option, index) => (
+        {isbnLists.map((element, index) => (
           <option
             className="search-filter__options--item"
             key={index}
-            value={option.toLowerCase()}
+            value={element}
           >
-            {option}
-          </option>
-        ))}
-      </select>{" "}
-      <select className="search-filter__options">
-        <option className="search-filter__options--item" value="" disabled>
-          search by
-        </option>
-        {fitlerConditons.map((option, index) => (
-          <option
-            className="search-filter__options--item"
-            key={index}
-            value={option.toLowerCase()}
-          >
-            {option}
+            {element}
           </option>
         ))}
       </select>

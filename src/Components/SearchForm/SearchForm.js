@@ -61,13 +61,13 @@ const SearchForm = (props) => {
           <option className="search-filter__options--item" value="" disabled>
             search by
           </option>
-          {fitlerConditons.map((option, index) => (
+          {fitlerConditons.map((element, index) => (
             <option
               className="search-filter__options--item"
               key={index}
-              value={option.toLowerCase()}
+              value={element.toLowerCase()}
             >
-              {option}
+              {element}
             </option>
           ))}
         </select>

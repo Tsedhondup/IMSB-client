@@ -3,13 +3,13 @@ const BookLists = (props) => {
   if (props.hasLoaded && props.bookLists.length > 0) {
     return (
       <div className="book-lists">
-        <ul className="book-lists__headers">
+        {/* <ul className="book-lists__headers">
           <li className="book-lists__headers--item">Title</li>
           <li className="book-lists__headers--item">Author</li>
           <li className="book-lists__headers--item">Genre</li>
           <li className="book-lists__headers--item">publication Date</li>
           <li className="book-lists__headers--item">ISBN</li>
-        </ul>
+        </ul> */}
         {props.bookLists.map((element) => {
           return (
             <div className="book-lists__body" key={element.entry_id}>
