@@ -6,7 +6,7 @@ export const filterGenre = (data) => {
   const flattenArray = nestedGenres
     .flat() // Flatten the array
     .map((str) => str.split(/\s+/)) // Split strings into individual words
-    .flat(); // Flatten the resulting nested arrays
+    .flat(); // Flatten the resulting arrays
 
   // REMOVE DUPLICATE ITEM FROM FLATTENED ARRAY
   const uniqueGenres = [...new Set(flattenArray)];
