@@ -1,0 +1,14 @@
+.search-form {
+  display: flex;
+  align-items: center;
+  &__input {
+    max-width: 100px;
+  }
+}
+.search-filter {
+  max-width: fit-content;
+}
+// JS DYNAMIC CLASS
+.js-border-red {
+  border: 1px solid red;
+}

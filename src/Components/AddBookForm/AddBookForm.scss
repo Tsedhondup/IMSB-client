@@ -1,0 +1,28 @@
+.add-books {
+  &__form {
+    padding: 16px;
+    &--input-field {
+      outline-width: 0px;
+      offset: 0px;
+      border: 1px solid gray;
+    }
+    &--warning-msg {
+      font-weight: normal;
+      color: red;
+      display: none;
+    }
+    &--add-button {
+      margin-top: 16px;
+    }
+  }
+}
+// DYNAMIC JS CLASSES
+.js-border-red {
+  border: solid 1px red;
+}
+.js-border-green {
+  border: 1px solid green;
+}
+.js-warning-msg {
+  display: block;
+}

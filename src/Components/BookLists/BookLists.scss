@@ -1,0 +1,12 @@
+.book-lists {
+  &__headers {
+    display: flex;
+    list-style: none;
+  }
+  &__body {
+    display: flex;
+    &--child {
+      font-weight: normal;
+    }
+  }
+}
