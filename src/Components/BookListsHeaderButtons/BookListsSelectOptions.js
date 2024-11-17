@@ -76,7 +76,7 @@ const BookListsSelectOptions = (props) => {
         ))}
       </select>{" "}
       {/* DATE HEADER */}
-      <select
+      {/* <select
         className="search-filter__options"
         value={pubDate}
         onChange={handleOptionChange}
@@ -93,7 +93,7 @@ const BookListsSelectOptions = (props) => {
             {element}
           </option>
         ))}
-      </select>
+      </select> */}
       {/* ISBN HEADER */}
       <select
         className="search-filter__options"
