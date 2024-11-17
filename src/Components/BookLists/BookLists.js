@@ -1,25 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./BookLists.scss";
-const BookLists = () => {
-  const [bookLists, setBookLists] = useState([]);
-  const [hasLoaded, setHasLoaded] = useState(false);
-
-  useEffect(() => {
-    axios
-      .get(" http://localhost:8080/inventories")
-      .then((respond) => {
-        setBookLists(respond.data);
-      })
-      .then(() => {
-        setHasLoaded(true);
-      })
-      .catch((err) => {
-        setBookLists([]);
-      });
-  }, []);
-
-  if (hasLoaded) {
+const BookLists = (props) => {
+  if (props.hasLoaded) {
     return (
       <div className="book-lists">
         <ul className="book-lists__headers">
@@ -29,7 +12,7 @@ const BookLists = () => {
           <li className="book-lists__headers--item">publication Date</li>
           <li className="book-lists__headers--item">ISBN</li>
         </ul>
-        {bookLists.map((element) => {
+        {props.bookLists.map((element) => {
           return (
             <div className="book-lists__body" key={element.entry_id}>
               <h3 className="book-lists__body--child">{element.title}</h3>
