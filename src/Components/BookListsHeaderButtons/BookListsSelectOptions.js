@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -29,16 +30,48 @@ const BookListsSelectOptions = (props) => {
     setGenreLists(genres);
     setIsbnLists(isbnsSorted);
   }, []);
-
-  const handleOptionChange = (event) => {};
+  const handleSearch = (keyName, keyValue) => {
+    axios
+      .get(" http://localhost:8080/filterInventories", {
+        params: {
+          [keyName]: keyValue,
+        },
+      })
+      .then((respond) => {
+        props.setBookLists(respond.data);
+      })
+      .then(() => {
+        props.setHasLoaded(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const handleOptionChange = (event) => {
+    if (event.target.id === "author") {
+      setAuthor(event.target.value);
+      handleSearch(event.target.id, event.target.value);
+    }
+    if (event.target.id === "genre") {
+      setGenre(event.target.value);
+      handleSearch(event.target.id, event.target.value);
+    }
+    if (event.target.id === "isbn") {
+      setIsbn(event.target.value);
+      handleSearch(event.target.id, event.target.value);
+    }
+  };
   return (
     <div className="option-container">
       <h2>title</h2>
       {/* AUTHOR HEADER */}
       <select
+        id="author"
         className="search-filter__options"
         value={author}
-        onChange={handleOptionChange}
+        onChange={(event) => {
+          handleOptionChange(event);
+        }}
       >
         <option className="search-filter__options--item" value="" disabled>
           author
@@ -55,9 +88,12 @@ const BookListsSelectOptions = (props) => {
       </select>
       {/* GENRE HEADER */}
       <select
+        id="genre"
         className="search-filter__options"
         value={genre}
-        onChange={handleOptionChange}
+        onChange={(event) => {
+          handleOptionChange(event);
+        }}
       >
         <option className="search-filter__options--item" value="" disabled>
           genre
@@ -81,9 +117,12 @@ const BookListsSelectOptions = (props) => {
       </div>
       {/* ISBN HEADER */}
       <select
+        id="isbn"
         className="search-filter__options"
         value={isbn}
-        onChange={handleOptionChange}
+        onChange={(event) => {
+          handleOptionChange(event);
+        }}
       >
         <option className="search-filter__options--item" value="" disabled>
           isbn

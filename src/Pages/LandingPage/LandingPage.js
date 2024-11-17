@@ -24,7 +24,10 @@ const LandingPage = () => {
     return (
       <div>
         <SearchForm setBookLists={setBookLists} />
-        <BookListsSelectOptions bookLists={bookLists} />
+        <BookListsSelectOptions
+          bookLists={bookLists}
+          setBookLists={setBookLists}
+        />
         <BookLists bookLists={bookLists} hasLoaded={hasLoaded} />
       </div>
     );
