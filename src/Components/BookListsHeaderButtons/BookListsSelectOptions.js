@@ -151,8 +151,8 @@ const BookListsSelectOptions = (props) => {
           onChange={(date) => {
             setStartDate(date);
           }}
-          onSelect={(date) => {
-            handleSearch("publication_date", date);
+          onSelect={() => {
+            handleSearch("publication_date", startDate);
           }}
         />
       </div>
