@@ -1,8 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import "./BookLists.scss";
 const BookLists = (props) => {
-  if (props.hasLoaded) {
+  if (props.hasLoaded && props.bookLists.length > 0) {
     return (
       <div className="book-lists">
         <ul className="book-lists__headers">
@@ -25,6 +23,14 @@ const BookLists = (props) => {
             </div>
           );
         })}
+      </div>
+    );
+  }
+  if (props.hasLoaded && props.bookLists.length < 0) {
+    return (
+      <div>
+        <h2>Inventory has no book!</h2>
+        <button>add new book</button>
       </div>
     );
   }

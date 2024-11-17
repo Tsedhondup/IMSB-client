@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./SearchForm.scss";
-const SearchForm = () => {
+const SearchForm = (props) => {
   const [searchValue, setSearchValue] = useState("");
   const [selectedCondition, setSelectedCondition] = useState("");
 
