@@ -5,7 +5,6 @@
 Inventory Managment System for Book (IMSB)
 ## Features
 
-- Create account
 - Add book
 - Filter books
 - Export book lists
@@ -27,6 +26,7 @@ To run this project, you will need to add the following environment variables to
 - CORS_ORIGIN=http://localhost:3000 
 - DB_HOST=your_db_host
 - DB_NAME=secondbind_imsb
+- DB_PASSWORD=your_db_password
 
 ## [Installation - Back-end](https://github.com/Tsedhondup/IMSB-API.git)
 Clone the repository with npm:
