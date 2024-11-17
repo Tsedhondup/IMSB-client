@@ -36,9 +36,22 @@ const AddBookForm = () => {
 
   // HANDLE POST
   const handleBookPost = () => {
-    if (!title || !author || !genre || !pubDate || !isbn) {
-      return;
-    } else {
+    if (!title) {
+      setTitleClass("js-border-red");
+    }
+    if (!author) {
+      setAuthorClass("js-border-red");
+    }
+    if (!genre) {
+      setGenreClass("js-border-red");
+    }
+    if (!pubDate) {
+      setDateClass("js-border-red");
+    }
+    if (!isbn) {
+      setIsbnClass("js-border-red");
+    }
+    if (title && author && genre && pubDate && isbn) {
       axios
         .post(" http://localhost:8080/inventories", {
           title,
