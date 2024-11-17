@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 import "./BookListsSelectOptions.scss";
 const BookListsSelectOptions = (props) => {
   const [author, setAuthor] = useState("");
   const [genre, setGenre] = useState("");
-  const [pubDate, setPubDate] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
   const [isbn, setIsbn] = useState("");
   const [authorLists, setAuthorLists] = useState([]);
   const [genreLists, setGenreLists] = useState([]);
-  const [pubDateLists, setPubDateLists] = useState([]);
   const [isbnLists, setIsbnLists] = useState([]);
   useEffect(() => {
     const authors = props.bookLists.map((element) => {
@@ -15,9 +17,6 @@ const BookListsSelectOptions = (props) => {
     });
     const genres = props.bookLists.map((element) => {
       return element.genre;
-    });
-    const publicationDates = props.bookLists.map((element) => {
-      return element.publication_date;
     });
 
     const isbns = props.bookLists.map((element) => element.isbn);
@@ -28,9 +27,7 @@ const BookListsSelectOptions = (props) => {
 
     setAuthorLists(authors);
     setGenreLists(genres);
-    setPubDateLists(publicationDates);
     setIsbnLists(isbnsSorted);
-    console.log(isbnsSorted);
   }, []);
 
   const handleOptionChange = (event) => {};
@@ -74,26 +71,14 @@ const BookListsSelectOptions = (props) => {
             {element}
           </option>
         ))}
-      </select>{" "}
+      </select>
       {/* DATE HEADER */}
-      {/* <select
-        className="search-filter__options"
-        value={pubDate}
-        onChange={handleOptionChange}
-      >
-        <option className="search-filter__options--item" value="" disabled>
-          publication date
-        </option>
-        {pubDateLists.map((element, index) => (
-          <option
-            className="search-filter__options--item"
-            key={index}
-            value={element}
-          >
-            {element}
-          </option>
-        ))}
-      </select> */}
+      <div>
+        <DatePicker
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+        />
+      </div>
       {/* ISBN HEADER */}
       <select
         className="search-filter__options"
