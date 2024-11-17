@@ -1,6 +1,8 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 const AddBookForm = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [genre, setGenre] = useState("");
@@ -18,16 +20,38 @@ const AddBookForm = () => {
     if (event.target.id === "genre") {
       setGenre(event.target.value);
     }
-    if (event.target.id === "pubDate") {
+    if (event.target.id === "publication-date") {
       setPubDate(event.target.value);
     }
     if (event.target.id === "isbn") {
       setIsbn(event.target.value);
     }
   };
+
+  // HANDLE POST
+  const handleBookPost = () => {
+    axios
+      .post(" http://localhost:8080/inventories", {
+        title,
+        author,
+        genre,
+        publication_date: pubDate,
+        isbn,
+      })
+      .then((respond) => {
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div>
-      <form>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+        }}
+      >
         <label htmlFor="title">title</label>
         <input
           id="title"
@@ -78,7 +102,9 @@ const AddBookForm = () => {
             handleFormInputs(event);
           }}
         ></input>
-        <button type="submit"></button>
+        <button type="button" onClick={handleBookPost}>
+          addBook
+        </button>
       </form>
     </div>
   );
