@@ -1,0 +1,25 @@
+@import "../../styles/partials/mixin";
+@import "../../styles/partials/variables";
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid $pewter;
+  @include tablet {
+    padding: 16px 32px;
+    margin-bottom: 32px;
+  }
+  &__site-name {
+    color: #264de4;
+    font-size: 20px;
+    font-weight: normal;
+  }
+  &__add-book-form-link {
+    font-size: 13px;
+    text-transform: uppercase;
+    text-align: right;
+  }
+}
