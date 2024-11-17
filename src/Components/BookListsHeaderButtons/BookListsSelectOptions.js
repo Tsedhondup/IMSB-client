@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
+import moment from "moment/moment";
 import "react-datepicker/dist/react-datepicker.css";
 
 import "./BookListsSelectOptions.scss";
@@ -49,9 +50,6 @@ const BookListsSelectOptions = (props) => {
       .then((respond) => {
         props.setBookLists(respond.data);
       })
-      .then(() => {
-        props.setHasLoaded(true);
-      })
       .catch((err) => {
         console.log(err);
       });
@@ -74,6 +72,14 @@ const BookListsSelectOptions = (props) => {
     if (event.target.id === "isbn") {
       setIsbn(event.target.value);
       handleSearch(event.target.id, event.target.value);
+    }
+  };
+
+  const handleDateChange = () => {
+    if (startDate) {
+      // GET NEW DATE
+      const newDate = moment(startDate).format("L");
+      handleSearch("publication_date", newDate);
     }
   };
   return (
@@ -147,12 +153,25 @@ const BookListsSelectOptions = (props) => {
       {/* DATE HEADER */}
       <div>
         <DatePicker
+          placeholderText="month/day/year"
           selected={startDate}
           onChange={(date) => {
             setStartDate(date);
+            handleDateChange();
           }}
-          onSelect={() => {
-            handleSearch("publication_date", startDate);
+          onSelect={(date) => {
+            setStartDate(date);
+            handleDateChange();
+          }}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              handleDateChange();
+            }
+          }}
+          onKeyUp={(event) => {
+            if (event.key === "Enter") {
+              handleDateChange();
+            }
           }}
         />
       </div>

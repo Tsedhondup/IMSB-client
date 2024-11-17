@@ -11,3 +11,4 @@ const Headers = () => {
     </div>
   );
 };
+export default Headers;

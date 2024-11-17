@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Headers from "../../Components/Header/Header";
 import BookLists from "../../Components/BookLists/BookLists";
 import SearchForm from "../../Components/SearchForm/SearchForm";
 import BookListsSelectOptions from "../../Components/BookListsHeaderButtons/BookListsSelectOptions";
@@ -24,6 +25,7 @@ const LandingPage = () => {
   if (hasLoaded) {
     return (
       <div>
+        <Headers />
         <SearchForm setBookLists={setBookLists} />
         <ExportButtons bookLists={bookLists} />
         <BookListsSelectOptions
