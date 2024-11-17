@@ -6,5 +6,9 @@
   }
 }
 .search-filter {
-  max-width: 100px;
+  max-width: fit-content;
+}
+// JS DYNAMIC CLASS
+.js-border-red {
+  border: 1px solid red;
 }
