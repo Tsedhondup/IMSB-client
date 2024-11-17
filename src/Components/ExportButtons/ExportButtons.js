@@ -8,13 +8,17 @@ const ExportButtons = (props) => {
       <div className="export-booklist__button-container">
         <button
           className="export-booklist__button-container--button"
-          onClick={exportToJSON(props.bookLists)}
+          onClick={() => {
+            exportToJSON(props.bookLists);
+          }}
         >
-          JSON formate
+          JSON format
         </button>
         <button
           className="export-booklist__button-container--button"
-          onClick={exportToCSV(props.bookLists)}
+          onClick={() => {
+            exportToCSV(props.bookLists);
+          }}
         >
           CSV format
         </button>
@@ -22,3 +26,4 @@ const ExportButtons = (props) => {
     </div>
   );
 };
+export default ExportButtons;

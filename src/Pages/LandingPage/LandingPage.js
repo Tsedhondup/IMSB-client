@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import BookLists from "../../Components/BookLists/BookLists";
 import SearchForm from "../../Components/SearchForm/SearchForm";
 import BookListsSelectOptions from "../../Components/BookListsHeaderButtons/BookListsSelectOptions";
+import ExportButtons from "../../Components/ExportButtons/ExportButtons";
 const LandingPage = () => {
   const [bookLists, setBookLists] = useState([]);
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -24,6 +25,7 @@ const LandingPage = () => {
     return (
       <div>
         <SearchForm setBookLists={setBookLists} />
+        <ExportButtons bookLists={bookLists} />
         <BookListsSelectOptions
           bookLists={bookLists}
           setBookLists={setBookLists}
