@@ -3,6 +3,7 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
 import "react-datepicker/dist/react-datepicker.css";
+import { filterGenre } from "../../utilities/filterGenre";
 
 import "./BookListsSelectOptions.scss";
 const BookListsSelectOptions = (props) => {
@@ -27,7 +28,6 @@ const BookListsSelectOptions = (props) => {
     const genres = props.bookLists.map((element) => {
       return element.genre;
     });
-
     const isbns = props.bookLists.map((element) => element.isbn);
     // SORTING ISBN IN ASCENDING ORDER
     const isbnsSorted = isbns.sort((element1, element2) => {
@@ -35,7 +35,7 @@ const BookListsSelectOptions = (props) => {
     });
     setTitleLists(titles);
     setAuthorLists(authors);
-    setGenreLists(genres);
+    setGenreLists(filterGenre(genres));
     setIsbnLists(isbnsSorted);
   }, []);
 
