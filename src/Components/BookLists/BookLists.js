@@ -31,7 +31,7 @@ const BookLists = () => {
         </ul>
         {bookLists.map((element) => {
           return (
-            <div className="book-lists__body">
+            <div className="book-lists__body" key={element.entry_id}>
               <h3 className="book-lists__body--child">{element.title}</h3>
               <h3 className="book-lists__body--child">{element.author}</h3>
               <h3 className="book-lists__body--child">{element.genre}</h3>
