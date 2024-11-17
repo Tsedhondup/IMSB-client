@@ -1,27 +1,57 @@
+// @import "../styles/partials/_mixins.scss";
+// @import "../styles/partials/_variables";
+@import "../../styles/partials/mixin";
+@import "../../styles/partials/variables";
 .add-books {
+  max-width: 100%;
+  @include tablet {
+    max-width: 500px;
+    margin: auto;
+  }
   &__form {
-    padding: 16px;
+    padding: 16px 0px;
     &--input-field {
+      padding: 5px;
+      margin-top: 5px;
+      margin-bottom: 16px;
       outline-width: 0px;
       offset: 0px;
-      border: 1px solid gray;
+      border: 1px solid $pewter;
     }
     &--warning-msg {
+      font-size: 13px;
       font-weight: normal;
       color: red;
       display: none;
+      margin-bottom: 16px;
     }
     &--add-button {
+      color: #ffffff;
+      text-transform: uppercase;
+      font-size: 13px;
+      padding: 10px;
       margin-top: 16px;
+      background-color: #1877f2;
+      border: 1px solid #1877f2;
     }
+    &--add-button:hover {
+      background-color: #0077b5;
+    }
+  }
+  &__form-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
   }
 }
 // DYNAMIC JS CLASSES
 .js-border-red {
   border: solid 1px red;
+  margin-bottom: 10px;
 }
 .js-border-green {
   border: 1px solid green;
+  margin-bottom: 16px;
 }
 .js-warning-msg {
   display: block;

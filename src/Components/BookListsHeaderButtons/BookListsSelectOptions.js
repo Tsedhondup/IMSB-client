@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import moment from "moment/moment";
 import "react-datepicker/dist/react-datepicker.css";
 import { filterGenre } from "../../utilities/filterGenre";
+import "./BookListsSelectOptions.scss";
 
 import "./BookListsSelectOptions.scss";
 const BookListsSelectOptions = (props) => {
@@ -87,7 +88,7 @@ const BookListsSelectOptions = (props) => {
       {/* TITLE HEADERS */}
       <select
         id="title"
-        className="search-filter__options"
+        className="option-container__options"
         value={title}
         onChange={(event) => {
           handleOptionChange(event);
@@ -98,7 +99,7 @@ const BookListsSelectOptions = (props) => {
         </option>
         {titleLists.map((element, index) => (
           <option
-            className="search-filter__options--item"
+            className="option-container__options--item"
             key={index}
             value={element}
           >
@@ -109,18 +110,18 @@ const BookListsSelectOptions = (props) => {
       {/* AUTHOR HEADER */}
       <select
         id="author"
-        className="search-filter__options"
+        className="option-container__options"
         value={author}
         onChange={(event) => {
           handleOptionChange(event);
         }}
       >
-        <option className="search-filter__options--item" value="" disabled>
+        <option className="option-container__options--item" value="" disabled>
           author
         </option>
         {authorLists.map((element, index) => (
           <option
-            className="search-filter__options--item"
+            className="option-container__options--item"
             key={index}
             value={element}
           >
@@ -131,18 +132,18 @@ const BookListsSelectOptions = (props) => {
       {/* GENRE HEADER */}
       <select
         id="genre"
-        className="search-filter__options"
+        className="option-container__options"
         value={genre}
         onChange={(event) => {
           handleOptionChange(event);
         }}
       >
-        <option className="search-filter__options--item" value="" disabled>
+        <option className="option-container__options--item" value="" disabled>
           genre
         </option>
         {genreLists.map((element, index) => (
           <option
-            className="search-filter__options--item"
+            className="option-container__options--item"
             key={index}
             value={element}
           >
@@ -151,8 +152,9 @@ const BookListsSelectOptions = (props) => {
         ))}
       </select>
       {/* DATE HEADER */}
-      <div>
+      <div className="option-container__options">
         <DatePicker
+          className="option-container__options--item"
           placeholderText="month/day/year"
           selected={startDate}
           onChange={(date) => {
@@ -178,18 +180,18 @@ const BookListsSelectOptions = (props) => {
       {/* ISBN HEADER */}
       <select
         id="isbn"
-        className="search-filter__options"
+        className="option-container__options"
         value={isbn}
         onChange={(event) => {
           handleOptionChange(event);
         }}
       >
-        <option className="search-filter__options--item" value="" disabled>
+        <option className="option-container__options--item" value="" disabled>
           isbn
         </option>
         {isbnLists.map((element, index) => (
           <option
-            className="search-filter__options--item"
+            className="option-container__options--item"
             key={index}
             value={element}
           >

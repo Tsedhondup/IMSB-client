@@ -1,12 +1,75 @@
+@import "../../styles/partials/mixin";
+@import "../../styles/partials/variables";
 .book-lists {
-  &__headers {
+  padding: 0px 16px;
+  @include tablet {
     display: flex;
-    list-style: none;
+    justify-content: space-between;
+    padding: 0px 32px;
   }
   &__body {
-    display: flex;
-    &--child {
-      font-weight: normal;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid $gray;
+    border-top-width: 1px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: auto;
+    @include tablet {
+      width: 100%;
+      border-top-width: 0px;
     }
+    &--child {
+      font-size: 13px;
+      font-weight: normal;
+      padding-bottom: 10px;
+    }
+  }
+  &__body:nth-child(1),
+  &__body:nth-child(2),
+  &__body:nth-child(3),
+  &__body:nth-child(4) {
+    border-right-width: 1px;
+
+    @include tablet {
+      border-right-width: 0px;
+    }
+  }
+}
+
+.tablet-book-lists {
+  display: none;
+  @include tablet {
+    display: flex;
+  }
+  &__child {
+    line-height: 1.5em;
+  }
+}
+.mobile-book-lists {
+  @include tablet {
+    display: none;
+  }
+  &__body {
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid $gray;
+    border-top-width: 1px;
+  }
+  &__mobile-header {
+    font-size: 14px;
+    font-weight: normal;
+    text-transform: uppercase;
+    background-color: $pewter;
+    padding: 5px;
+    margin-bottom: 5px;
+    @include tablet {
+      display: none;
+    }
+  }
+  &__child {
+    font-size: 13px;
+    font-weight: normal;
+    padding-bottom: 10px;
   }
 }

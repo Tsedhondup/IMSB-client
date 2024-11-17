@@ -48,6 +48,33 @@ const SearchForm = (props) => {
         handleSearch();
       }}
     >
+      <div className="search-form__filter-wrapper">
+        <h2 className="search-form__filter-wrapper--text">Seacrh by</h2>
+        <div className="search-filter">
+          <select
+            className="search-filter__options"
+            value={selectedCondition}
+            onChange={handleOptionChange}
+          >
+            <option
+              className={`search-filter__options--item ${searchByButtonClass}`}
+              value=""
+              disabled
+            >
+              search by
+            </option>
+            {fitlerConditons.map((element, index) => (
+              <option
+                className="search-filter__options--item"
+                key={index}
+                value={element.toLowerCase()}
+              >
+                {element}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
       <input
         className="search-form__input"
         type="text"
@@ -57,31 +84,6 @@ const SearchForm = (props) => {
           handleSearchValue(event);
         }}
       ></input>
-      <h2>Seacrh by</h2>
-      <div className="search-filter">
-        <select
-          className="search-filter__options"
-          value={selectedCondition}
-          onChange={handleOptionChange}
-        >
-          <option
-            className={`search-filter__options--item ${searchByButtonClass}`}
-            value=""
-            disabled
-          >
-            search by
-          </option>
-          {fitlerConditons.map((element, index) => (
-            <option
-              className="search-filter__options--item"
-              key={index}
-              value={element.toLowerCase()}
-            >
-              {element}
-            </option>
-          ))}
-        </select>
-      </div>
     </form>
   );
 };

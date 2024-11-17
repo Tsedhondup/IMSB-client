@@ -1,0 +1,39 @@
+@import "../../styles/partials/mixin";
+@import "../../styles/partials/variables";
+.export-booklists {
+  padding: 0px 16px;
+  @include tablet {
+    padding: 0px 32px;
+  }
+  &__header {
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 16px;
+  }
+  &__button-container {
+    @include tablet {
+      display: flex;
+      gap: 2px;
+    }
+    &--button {
+      width: 100%;
+      color: #ffffff;
+      text-transform: uppercase;
+      font-size: 13px;
+      padding: 10px;
+      margin-bottom: 2px;
+      border-width: 0px;
+      offset: 0px;
+      @include tablet {
+        max-width: 150px;
+      }
+    }
+    &--button:nth-child(1) {
+      background-color: #f0db4f;
+      color: #000000;
+    }
+    &--button:nth-child(2) {
+      background-color: #3c873a;
+    }
+  }
+}

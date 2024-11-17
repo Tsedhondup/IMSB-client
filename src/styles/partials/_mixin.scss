@@ -1,0 +1,57 @@
+@use "./variables" as *;
+
+@mixin mobile {
+  @media (min-width: $mobile-width) {
+    @content;
+  }
+}
+@mixin mobile2 {
+  @media (min-width: $mobile-width2) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $tablet-width) {
+    @content;
+  }
+}
+@mixin tablet2 {
+  @media (min-width: $tablet-width2) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-width) {
+    @content;
+  }
+}
+@mixin desktop2 {
+  @media (min-width: $desktop-width2) {
+    @content;
+  }
+}
+@mixin hero-min-heigt {
+  @media (max-height: $hero-min-height) {
+    @content;
+  }
+}
+
+@mixin viewPortMinHeight {
+  @media (min-height: $viewPortMinHeight) {
+    @content;
+  }
+}
+
+@mixin viewPortMaxHeight {
+  @media (max-height: $viewPortMaxHeight) {
+    @content;
+  }
+}
+
+@mixin horizontalViewHeight {
+  @media (max-height: $heroSocialHeight) {
+    @content;
+  }
+}

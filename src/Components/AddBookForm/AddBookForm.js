@@ -241,7 +241,7 @@ const AddBookForm = () => {
           type="button"
           onClick={handleBookPost}
         >
-          addBook
+          add Book
         </button>
       </form>
     </div>
