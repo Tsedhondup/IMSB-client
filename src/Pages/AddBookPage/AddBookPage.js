@@ -1,4 +1,10 @@
+import AddBookForm from "../../Components/AddBookForm/AddBookForm";
 const AddBookPage = () => {
-  return <h1> this is add book form page</h1>;
+  return (
+    <div>
+      <h1>Add book</h1>
+      <AddBookForm />
+    </div>
+  );
 };
 export default AddBookPage;
