@@ -1,0 +1,20 @@
+@import "../../styles/partials/mixin";
+@import "../../styles/partials/variables";
+.add-books-form {
+  padding: 0px 16px;
+  margin: 16px 0px;
+  @include tablet {
+    padding: 0px 32px;
+    margin: 32px 0px;
+  }
+  &__header {
+    font-size: 20px;
+    font-weight: normal;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $pewter;
+    @include tablet {
+      max-width: 500px;
+      margin: auto;
+    }
+  }
+}
