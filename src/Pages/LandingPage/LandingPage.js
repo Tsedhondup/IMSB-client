@@ -26,8 +26,8 @@ const LandingPage = () => {
     return (
       <div>
         <Headers />
+        <ExportButtons bookLists={bookLists} />
         <SearchForm setBookLists={setBookLists} />
-        {/* <ExportButtons bookLists={bookLists} /> */}
         <BookListsSelectOptions
           bookLists={bookLists}
           setBookLists={setBookLists}
