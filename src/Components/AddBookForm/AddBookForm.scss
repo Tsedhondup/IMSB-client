@@ -6,6 +6,10 @@
       offset: 0px;
       border: 1px solid gray;
     }
+    &--warning-msg {
+      font-weight: normal;
+      color: red;
+    }
     &--add-button {
       margin-top: 16px;
     }

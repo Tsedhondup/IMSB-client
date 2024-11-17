@@ -36,26 +36,42 @@ const AddBookForm = () => {
 
   // HANDLE POST
   const handleBookPost = () => {
-    axios
-      .post(" http://localhost:8080/inventories", {
-        title,
-        author,
-        genre,
-        publication_date: pubDate,
-        isbn,
-      })
-      .then((respond) => {
-        navigate("/");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (!title || !author || !genre || !pubDate || !isbn) {
+      return;
+    } else {
+      axios
+        .post(" http://localhost:8080/inventories", {
+          title,
+          author,
+          genre,
+          publication_date: pubDate,
+          isbn,
+        })
+        .then((respond) => {
+          navigate("/");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   // FORM VALIDATION
   const validateForm = (event) => {
     if (event.target.id === "title") {
       event.target.value ? setTitleClass("") : setTitleClass("js-border-red");
+    }
+    if (event.target.id === "author") {
+      event.target.value ? setAuthorClass("") : setAuthorClass("js-border-red");
+    }
+    if (event.target.id === "genre") {
+      event.target.value ? setGenreClass("") : setGenreClass("js-border-red");
+    }
+    if (event.target.id === "publication-date") {
+      event.target.value ? setDateClass("") : setDateClass("js-border-red");
+    }
+    if (event.target.id === "isbn") {
+      event.target.value ? setIsbnClass("") : setIsbnClass("js-border-red");
     }
   };
   return (
@@ -82,6 +98,9 @@ const AddBookForm = () => {
             validateForm(event);
           }}
         ></input>
+        <h3 className="add-books__form--warning-msg">
+          Please enter book title
+        </h3>
         <label htmlFor="author" className="add-books__form-label">
           Author name
         </label>
@@ -98,6 +117,9 @@ const AddBookForm = () => {
             validateForm(event);
           }}
         ></input>
+        <h3 className="add-books__form--warning-msg">
+          Please enter author name
+        </h3>
         <label htmlFor="genre" className="add-books__form-label">
           genre
         </label>
@@ -114,6 +136,8 @@ const AddBookForm = () => {
             validateForm(event);
           }}
         ></input>
+        <h3 className="add-books__form--warning-msg">Enter genre</h3>
+
         <label htmlFor="publication-date" className="add-books__form-label">
           Date of publication
         </label>
@@ -130,6 +154,10 @@ const AddBookForm = () => {
             validateForm(event);
           }}
         ></input>
+        <h3 className="add-books__form--warning-msg">
+          enter date of publication
+        </h3>
+
         <label htmlFor="isbn" className="add-books__form-label">
           ISBN
         </label>
@@ -146,6 +174,10 @@ const AddBookForm = () => {
             validateForm(event);
           }}
         ></input>
+        <h3 className="add-books__form--warning-msg">
+          Please enter valid ISBN
+        </h3>
+
         <button
           className="add-books__form--add-button"
           type="button"
