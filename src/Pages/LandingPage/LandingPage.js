@@ -1,5 +1,11 @@
 import BookLists from "../../Components/BookLists/BookLists";
+import SearchForm from "../../Components/SearchForm/SearchForm";
 const LandingPage = () => {
-  return <BookLists />;
+  return (
+    <div>
+      <SearchForm />
+      <BookLists />
+    </div>
+  );
 };
 export default LandingPage;
