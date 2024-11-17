@@ -59,19 +59,29 @@ const AddBookForm = () => {
   // FORM VALIDATION
   const validateForm = (event) => {
     if (event.target.id === "title") {
-      event.target.value ? setTitleClass("") : setTitleClass("js-border-red");
+      event.target.value
+        ? setTitleClass("js-border-green")
+        : setTitleClass("js-border-red");
     }
     if (event.target.id === "author") {
-      event.target.value ? setAuthorClass("") : setAuthorClass("js-border-red");
+      event.target.value
+        ? setAuthorClass("js-border-green")
+        : setAuthorClass("js-border-red");
     }
     if (event.target.id === "genre") {
-      event.target.value ? setGenreClass("") : setGenreClass("js-border-red");
+      event.target.value
+        ? setGenreClass("js-border-green")
+        : setGenreClass("js-border-red");
     }
     if (event.target.id === "publication-date") {
-      event.target.value ? setDateClass("") : setDateClass("js-border-red");
+      event.target.value
+        ? setDateClass("js-border-green")
+        : setDateClass("js-border-red");
     }
     if (event.target.id === "isbn") {
-      event.target.value ? setIsbnClass("") : setIsbnClass("js-border-red");
+      event.target.value
+        ? setIsbnClass("js-border-green")
+        : setIsbnClass("js-border-red");
     }
   };
   return (
@@ -82,6 +92,7 @@ const AddBookForm = () => {
           event.preventDefault();
         }}
       >
+        {/* TITLE */}
         <label htmlFor="title" className="add-books__form-label">
           title
         </label>
@@ -93,14 +104,21 @@ const AddBookForm = () => {
           onChange={(event) => {
             event.stopPropagation();
             handleFormInputs(event);
+            validateForm(event);
           }}
           onBlur={(event) => {
             validateForm(event);
           }}
         ></input>
-        <h3 className="add-books__form--warning-msg">
+        <h3
+          className={`add-books__form--warning-msg ${
+            titleClass === "js-border-red" ? "js-warning-msg" : ""
+          }`}
+        >
           Please enter book title
         </h3>
+
+        {/* AUTHOR */}
         <label htmlFor="author" className="add-books__form-label">
           Author name
         </label>
@@ -112,14 +130,21 @@ const AddBookForm = () => {
           onChange={(event) => {
             event.stopPropagation();
             handleFormInputs(event);
+            validateForm(event);
           }}
           onBlur={(event) => {
             validateForm(event);
           }}
         ></input>
-        <h3 className="add-books__form--warning-msg">
+        <h3
+          className={`add-books__form--warning-msg ${
+            authorClass === "js-border-red" ? "js-warning-msg" : ""
+          }`}
+        >
           Please enter author name
         </h3>
+
+        {/* GENRE */}
         <label htmlFor="genre" className="add-books__form-label">
           genre
         </label>
@@ -131,13 +156,21 @@ const AddBookForm = () => {
           onChange={(event) => {
             event.stopPropagation();
             handleFormInputs(event);
+            validateForm(event);
           }}
           onBlur={(event) => {
             validateForm(event);
           }}
         ></input>
-        <h3 className="add-books__form--warning-msg">Enter genre</h3>
+        <h3
+          className={`add-books__form--warning-msg ${
+            genreClass === "js-border-red" ? "js-warning-msg" : ""
+          }`}
+        >
+          Enter genre
+        </h3>
 
+        {/* DATE OF PUBLICATION */}
         <label htmlFor="publication-date" className="add-books__form-label">
           Date of publication
         </label>
@@ -149,15 +182,21 @@ const AddBookForm = () => {
           onChange={(event) => {
             event.stopPropagation();
             handleFormInputs(event);
+            validateForm(event);
           }}
           onBlur={(event) => {
             validateForm(event);
           }}
         ></input>
-        <h3 className="add-books__form--warning-msg">
+        <h3
+          className={`add-books__form--warning-msg ${
+            dateClass === "js-border-red" ? "js-warning-msg" : ""
+          }`}
+        >
           enter date of publication
         </h3>
 
+        {/* ISBN */}
         <label htmlFor="isbn" className="add-books__form-label">
           ISBN
         </label>
@@ -169,12 +208,17 @@ const AddBookForm = () => {
           onChange={(event) => {
             event.stopPropagation();
             handleFormInputs(event);
+            validateForm(event);
           }}
           onBlur={(event) => {
             validateForm(event);
           }}
         ></input>
-        <h3 className="add-books__form--warning-msg">
+        <h3
+          className={`add-books__form--warning-msg ${
+            isbnClass === "js-border-red" ? "js-warning-msg" : ""
+          }`}
+        >
           Please enter valid ISBN
         </h3>
 
