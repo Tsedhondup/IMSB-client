@@ -22,11 +22,10 @@ const SearchForm = (props) => {
     axios
       .get(" http://localhost:8080/filterInventories", {
         params: {
-          [selectedCondition]: searchValue,
+          [selectedCondition.toLocaleLowerCase()]: searchValue,
         },
       })
       .then((respond) => {
-        console.log(respond.data);
         props.setBookLists(respond.data);
       })
       .then(() => {
