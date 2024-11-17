@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import "./SearchForm.scss";
 const SearchForm = (props) => {
   const [searchValue, setSearchValue] = useState("");
@@ -17,9 +18,32 @@ const SearchForm = (props) => {
   const handleOptionChange = (event) => {
     setSelectedCondition(event.target.value);
   };
-
+  const handleSearch = () => {
+    axios
+      .get(" http://localhost:8080/filterInventories", {
+        params: {
+          [selectedCondition]: searchValue,
+        },
+      })
+      .then((respond) => {
+        console.log(respond.data);
+        props.setBookLists(respond.data);
+      })
+      .then(() => {
+        props.setHasLoaded(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
-    <form className="search-form">
+    <form
+      className="search-form"
+      onSubmit={(event) => {
+        event.preventDefault();
+        handleSearch();
+      }}
+    >
       <input
         className="search-form__input"
         type="text"

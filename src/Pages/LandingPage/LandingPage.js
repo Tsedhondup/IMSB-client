@@ -5,7 +5,6 @@ import SearchForm from "../../Components/SearchForm/SearchForm";
 const LandingPage = () => {
   const [bookLists, setBookLists] = useState([]);
   const [hasLoaded, setHasLoaded] = useState(false);
-
   useEffect(() => {
     axios
       .get(" http://localhost:8080/inventories")
