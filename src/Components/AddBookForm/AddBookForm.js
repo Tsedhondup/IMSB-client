@@ -192,6 +192,7 @@ const AddBookForm = () => {
           className={`add-books__form--input-field ${dateClass}`}
           type="text"
           value={pubDate}
+          placeholder="Month/Day/Year"
           onChange={(event) => {
             event.stopPropagation();
             handleFormInputs(event);
